@@ -1,0 +1,7 @@
+version: '3'
+services:
+  myhouse-app:
+    build:
+      context: .
+    ports:
+      - "8080:8080"  # Замените порт на тот, который ваше приложение использует

@@ -11,7 +11,7 @@ type Family struct{
 	Family []Member
 }
 
-func addFamily Family{
+func AddFamily() Family{
 	var family []Member
 
 	family = append(family, Member{Name: "Cago", Title: "Brother", Age: 20, Occupation: "Plumber"})

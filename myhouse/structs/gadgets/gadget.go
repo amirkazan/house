@@ -28,10 +28,10 @@ type Gadgets struct {
 	phone Phone
 }
 
-func addGadget() Gadgets {
+func AddGadget() Gadgets {
 	return Gadgets{
 		tv: TV{Type: "TV", Brand: "Samsung", Age: 3, Condition: "Good"},
 		laptop: Laptop{Type: "Laptop", Brand: "Asus", OS: "Windows", Condition: "Perfect"},
-		phone: Phone{Type: "Phone", Brand: "Apple", OS: "IOS", Age: 2, Condition: "Perfect"}
+		phone: Phone{Type: "Phone", Brand: "Apple", OS: "IOS", Age: 2, Condition: "Perfect"},
 	}
 }

@@ -12,7 +12,7 @@ type FurnitureSet struct{
 	FurnitureSet []Furniture
 }
 
-func addFurnitureSet FurnitureSet{
+func AddFurnitureSet() FurnitureSet{
 	var furn []Furniture
 	furn = append(furn, Furniture{Type: "Couch", Age: 15 , Condition: "Bad", Material: "Leather", Function: "Chilling"})
 	furn = append(furn, Furniture{Type: "Bed", Age: 5, Condition: "Okay", Material: "Wood", Function: "Sleeping"})

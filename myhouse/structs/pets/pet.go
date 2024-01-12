@@ -11,7 +11,7 @@ type Pets struct {
 	Pets []Pet
 }
 
-func addPet() Pets{
+func AddPet() Pets{
 	var pets []Pet
 
 	pets = append(pets, Pet{Spec: "Penguin", Name: "Estriper", Age: 18, Color: "Black&white"})
