@@ -4,8 +4,7 @@ import (
 	"house/myhouse/structs/family"
 	"house/myhouse/structs/pets"
 	"house/myhouse/structs/rooms"
-	"house/myhouse/structs/gadgets"
-	"house/myhouse/structs/furniture"
+	"fmt"
 )
 
 type House struct {
@@ -13,8 +12,6 @@ type House struct {
 	Family family.Family
 	Pets pets.Pets
 	Rooms rooms.Rooms
-	Gadgets gadgets.Gadgets
-	Furniture furniture.FurnitureSet
 }
 
 func AddHouse() House {
@@ -23,7 +20,10 @@ func AddHouse() House {
 		Family: family.AddFamily(),
 		Pets: pets.AddPet(),
 		Rooms: rooms.AddRoom(),
-		Gadgets: gadgets.AddGadget(),
-		Furniture: furniture.AddFurnitureSet(),
 	}
+}
+
+func (h House) String() string {
+	return fmt.Sprintf("___My House___\nSquare: %f\n\n___Family___\n%s\n___Pets___\n%s\n___Rooms(w/ furniture&gadgets)___\n%s",
+		h.Square, h.Family.String(), h.Pets.String(), h.Rooms.String())
 }

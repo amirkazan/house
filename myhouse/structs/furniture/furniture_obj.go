@@ -1,23 +1,41 @@
 package furniture
 
-type Furniture struct{
-	Type string
-	Age int16
+import (
+	"fmt"
+	"strings"
+)
+
+type Furniture struct {
+	Type      string
+	Age       int16
 	Condition string
-	Material string
-	Function string
+	Material  string
+	Function  string
 }
 
-type FurnitureSet struct{
+type FurnitureSet struct {
 	FurnitureSet []Furniture
 }
 
-func AddFurnitureSet() FurnitureSet{
-	var furn []Furniture
-	furn = append(furn, Furniture{Type: "Couch", Age: 15 , Condition: "Bad", Material: "Leather", Function: "Chilling"})
-	furn = append(furn, Furniture{Type: "Bed", Age: 5, Condition: "Okay", Material: "Wood", Function: "Sleeping"})
-	furn = append(furn, Furniture{Type: "Table", Age: 3, Condition: "Pretty good", Material: "Iron&glass", Function: "Eating"})
-	furn = append(furn, Furniture{Type: "Chair", Age: 3, Condition: "Pretty good", Material: "Iron&glass", Function: "Sitting"})
+func NewFurnitureSet() *FurnitureSet {
+	return &FurnitureSet{}
+}
 
-	return FurnitureSet{FurnitureSet: furn}
+func (f *FurnitureSet) AddFurniture(item Furniture) {
+	f.FurnitureSet = append(f.FurnitureSet, item)
+}
+
+func (fs FurnitureSet) String() string {
+	var furnitureStrings []string
+
+	for _, f := range fs.FurnitureSet {
+		furnitureStrings = append(furnitureStrings, f.String())
+	}
+
+	return strings.Join(furnitureStrings, "\n")
+}
+
+func (f Furniture) String() string {
+	return fmt.Sprintf("{Type: %s, Age: %d, Condition: %s, Material: %s, Function: %s}",
+		f.Type, f.Age, f.Condition, f.Material, f.Function)
 }

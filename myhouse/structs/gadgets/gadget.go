@@ -1,37 +1,45 @@
 package gadgets
 
-type TV struct {
-	Type string
-	Brand string
-	Age int16
+import (
+	"fmt"
+	"strings"
+)
+
+type Gadget struct {
+	Type      string
+	Brand     string
+	Age       int16
 	Condition string
 }
 
-type Laptop struct {
-	Type string
-	Brand string
-	OS string
-	Condition string
+type GadgetsSet struct {
+	GadgetsSet []Gadget
 }
 
-type Phone struct {
-	Type string
-	Brand string
-	OS string
-	Age int16
-	Condition string
+func (g *GadgetsSet) AddGadget(gadget Gadget) {
+	g.GadgetsSet = append(g.GadgetsSet, gadget)
 }
 
-type Gadgets struct {
-	tv TV
-	laptop Laptop
-	phone Phone
+func NewGadgetsSet() *GadgetsSet {
+	var gadgets []Gadget
+
+	gadgets = append(gadgets, Gadget{Type: "Smart Speaker", Brand: "Amazon", Age: 1, Condition: "Excellent"})
+	gadgets = append(gadgets, Gadget{Type: "Router", Brand: "TP-Link", Age: 2, Condition: "Good"})
+
+	return &GadgetsSet{GadgetsSet: gadgets}
 }
 
-func AddGadget() Gadgets {
-	return Gadgets{
-		tv: TV{Type: "TV", Brand: "Samsung", Age: 3, Condition: "Good"},
-		laptop: Laptop{Type: "Laptop", Brand: "Asus", OS: "Windows", Condition: "Perfect"},
-		phone: Phone{Type: "Phone", Brand: "Apple", OS: "IOS", Age: 2, Condition: "Perfect"},
+func (gs GadgetsSet) String() string {
+	var gadgetStrings []string
+
+	for _, g := range gs.GadgetsSet {
+		gadgetStrings = append(gadgetStrings, g.String())
 	}
+
+	return strings.Join(gadgetStrings, "\n")
+}
+
+func (g Gadget) String() string {
+	return fmt.Sprintf("{Type: %s, Brand: %s, Age: %d, Condition: %s}",
+		g.Type, g.Brand, g.Age, g.Condition)
 }

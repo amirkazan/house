@@ -8,8 +8,4 @@ run:
 stop:
 	docker-compose down
 
-clean:
-	rm -f main
-	docker-compose down -v
-
 rebuild: clean build run
